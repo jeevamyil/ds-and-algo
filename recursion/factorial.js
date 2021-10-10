@@ -1,11 +1,12 @@
 const factorial_recursive = (num) => {
-  if (num === 1) {
-    return 1;
-  }
+    if (num< 0 ) return 0;
+    if (num <= 1) {
+      return 1;
+    }
   return num * factorial_recursive(num - 1);
 };
 
-console.log(factorial_recursive(5));
+console.log(factorial_recursive(7));
 
 
 const factorial_iterative =(num)=>{
