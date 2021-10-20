@@ -28,7 +28,7 @@ const mergeSort = (arr) => {
     return arr;
   }
   let mid = Math.floor(arr.length / 2);
-  console.log(arr.slice(0, mid), "array");
+  console.log(arr.slice(0, mid), " 1st half",arr.slice(mid), " 2nd half");
   let left = mergeSort(arr.slice(0, mid));
   console.log(left, "left array");
   let right = mergeSort(arr.slice(mid));
