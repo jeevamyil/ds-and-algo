@@ -58,12 +58,27 @@ class LinkedList {
       return current;
     }
   };
+  unshift = (val) => {
+    let node = new Node(val);
+    if (!this.head) {
+      this.head = node;
+      this.tail = node;
+    } else {
+        let oldHead = this.head;
+        this.head = node;
+        node.next=oldHead;
+        this.length++;
+        return this;
+    }
+  };
 }
 
 ll = new LinkedList();
 ll.push("hi");
 ll.push("there");
 ll.push("!!!");
-console.log(ll);
+console.log(ll,"start");
 let i = ll.shift();
-console.log(ll, i);
+console.log(ll, i,"shifted");
+ll.unshift(i);
+console.log(ll,"unshifted")
