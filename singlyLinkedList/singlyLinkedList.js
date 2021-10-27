@@ -40,7 +40,22 @@ class LinkedList {
         this.head = null;
         this.tail = null;
       }
-      return this;
+      return currentNode;
+    }
+  };
+  shift = () => {
+    if (!this.head) {
+      return undefined;
+    } else {
+      let current = this.head;
+      let newHead = current.next;
+      this.head = newHead;
+      this.length--;
+      if (this.length === 0) {
+        this.head = null;
+        this.tail = null;
+      }
+      return current;
     }
   };
 }
@@ -50,5 +65,5 @@ ll.push("hi");
 ll.push("there");
 ll.push("!!!");
 console.log(ll);
-let i = ll.pop();
+let i = ll.shift();
 console.log(ll, i);
