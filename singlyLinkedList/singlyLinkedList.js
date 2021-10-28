@@ -64,11 +64,24 @@ class LinkedList {
       this.head = node;
       this.tail = node;
     } else {
-        let oldHead = this.head;
-        this.head = node;
-        node.next=oldHead;
-        this.length++;
-        return this;
+      let oldHead = this.head;
+      this.head = node;
+      node.next = oldHead;
+      this.length++;
+      return this;
+    }
+  };
+  get = (index) => {
+    if (index < 0 || index > this.length || this.length === 0) {
+      return null;
+    } else {
+      let counter = 0;
+      let current = this.head;
+      while (counter !== index) {
+        counter++;
+        current = current.next;
+      }
+      return current;
     }
   };
 }
@@ -77,8 +90,6 @@ ll = new LinkedList();
 ll.push("hi");
 ll.push("there");
 ll.push("!!!");
-console.log(ll,"start");
-let i = ll.shift();
-console.log(ll, i,"shifted");
-ll.unshift(i);
-console.log(ll,"unshifted")
+console.log(ll.get(1));
+console.log(ll.set(1, "hola"));
+console.log(ll);
