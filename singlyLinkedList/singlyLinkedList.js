@@ -84,6 +84,15 @@ class LinkedList {
       return current;
     }
   };
+  set = (index, value) => {
+    let node = this.get(index);
+    if (node) {
+      node.val = value;
+      return true;
+    }
+    return false;
+  };
+ 
 }
 
 ll = new LinkedList();
