@@ -44,6 +44,37 @@ class DLinkedList {
     this.length--;
     return targetNode;
   };
+  shift = () => {
+    let targetNode = this.head;
+    if (!this.head) {
+      return undefined;
+    } else if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      let newHead = targetNode.next;
+      targetNode.next = null;
+      newHead.prev = null;
+      this.head = newHead;
+    }
+    this.length--;
+    return targetNode;
+  };
+  unshift = (val) => {
+    let node = new Node(val);
+    if (!this.head) {
+      this.head = node;
+      this.tail = node;
+      return this;
+    } else {
+      let oldNode = this.head;
+      oldNode.prev = node;
+      node.next = oldNode;
+      this.head = node;
+    }
+    this.length++;
+    return this;
+  };
   
 }
 
