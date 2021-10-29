@@ -50,6 +50,7 @@ class LinkedList {
       let current = this.head;
       let newHead = current.next;
       this.head = newHead;
+      current.next= null;
       this.length--;
       if (this.length === 0) {
         this.head = null;
@@ -92,6 +93,38 @@ class LinkedList {
     }
     return false;
   };
+  insert = (index, value) => {
+    if (index < 0 || index > this.length) {
+      return false;
+    } else if (index === 0) {
+      return !!this.unshift(value);
+    } else if (index === this.length) {
+      return !!this.push(value);
+    } else {
+      let targetNode = this.get(index - 1);
+      let newNode = new Node(value);
+      let temp = targetNode.next;
+      targetNode.next = newNode;
+      newNode.next = temp;
+      this.length++;
+      return true;
+    }
+  };
+  remove = (index) => {
+    if (index < 0 || index >= this.length) {
+      return undefined;
+    } else if (index === 0) {
+      return this.shift();
+    } else if (index === this.length - 1) {
+      return this.pop();
+    } else {
+      let prevNode = this.get(index - 1);
+      let targetNode = prevNode.next;
+      prevNode.next = targetNode.next;
+      this.length--;
+      return targetNode;
+    }
+  };
  
 }
 
@@ -99,6 +132,6 @@ ll = new LinkedList();
 ll.push("hi");
 ll.push("there");
 ll.push("!!!");
-console.log(ll.get(1));
-console.log(ll.set(1, "hola"));
+ll.remove(2);
 console.log(ll);
+
