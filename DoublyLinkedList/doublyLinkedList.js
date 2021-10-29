@@ -65,7 +65,6 @@ class DLinkedList {
     if (!this.head) {
       this.head = node;
       this.tail = node;
-      return this;
     } else {
       let oldNode = this.head;
       oldNode.prev = node;
@@ -74,6 +73,37 @@ class DLinkedList {
     }
     this.length++;
     return this;
+  };
+  get = (index) => {
+    if (index < 0 || index >= this.length) {
+      return null;
+    }
+    let current = null;
+    let counter = null;
+    if (index <= this.length / 2) {
+      counter = 0;
+      current = this.head;
+      while (counter !== index) {
+        counter++;
+        current = current.next;
+      }
+    } else {
+      counter = this.length - 1;
+      current = this.tail;
+      while (counter !== index) {
+        counter--;
+        current = current.prev;
+      }
+    }
+    return current;
+  };
+  set = (index, value) => {
+    let node = this.get(index);
+    if (node) {
+      node.value = value;
+      return true;
+    }
+    return false;
   };
   
 }
