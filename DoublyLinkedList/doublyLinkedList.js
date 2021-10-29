@@ -105,7 +105,51 @@ class DLinkedList {
     }
     return false;
   };
-  
+  insert = (index, value) => {
+    if (index < 0 || index > this.length) {
+      return false;
+    } else if (index === 0) {
+      return !!this.unshift(value);
+    } else if (index === this.length) {
+      return !!this.push(value);
+    }
+    let newNode = new Node(value);
+    let prevNode = this.get(index - 1);
+    let nextNode = prevNode.next;
+    prevNode.next = newNode;
+    newNode.prev = prevNode;
+    newNode.next = nextNode;
+    nextNode.prev = newNode;
+    this.length++;
+    return true;
+  };
+  remove = (index) => {
+    if (index < 0 || index >= this.length) {
+      return null;
+    } else if (index === 0) {
+      return !!this.shift();
+    } else if (index === this.length - 1) {
+      return !!this.pop();
+    }
+    let targetNode = this.get(index);
+    let prevNode = targetNode.prev;
+    let nextNode = targetNode.next;
+    targetNode.next = null;
+    targetNode.prev = null;
+    prevNode.next = nextNode;
+    nextNode.prev = prevNode;
+    this.length--;
+    return targetNode;
+  };
+  print = () => {
+    let arr = [];
+    let current = this.head;
+    while (current) {
+      arr.push(current.value);
+      current = current.next;
+    }
+    console.log(arr);
+  };
 }
 
 let a = new DLinkedList();
