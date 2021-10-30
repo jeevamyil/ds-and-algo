@@ -37,7 +37,41 @@ class BST {
       }
     }
   };
- 
+  find = (value) => {
+    if (!this.root) {
+      return undefined;
+    }
+    let found = false;
+    let current = this.root;
+    while (!found && current) {
+      if (value < current.value) {
+        current = current.left;
+      } else if (value > current.value) {
+        current = current.right;
+      } else {
+        found = true;
+      }
+    }
+    if (!found) return undefined;
+    return current;
+  };
+  contains = (value) => {
+    if (!this.root) {
+      return undefined;
+    }
+    let found = false;
+    let current = this.root;
+    while (!found && current) {
+      if (value < current.value) {
+        current = current.left;
+      } else if (value > current.value) {
+        current = current.right;
+      } else {
+        found = true;
+      }
+    }
+    return found;
+  };
 }
 
 let a = new BST();
