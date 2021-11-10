@@ -124,4 +124,5 @@ a.insert(10);
 a.insert(5);
 a.insert(33);
 a.insert(7);
-console.log(a.BFS(),a.DFSPostOrder(),a.DFSPreOrder(),a.DFSInOrder());
+a.insert(13);
+console.log(a.BFS(),a.DFSPreOrder(),a.DFSInOrder(),a.DFSPostOrder());
