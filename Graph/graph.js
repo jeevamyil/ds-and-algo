@@ -1,21 +1,21 @@
 class Graph {
   constructor() {
-    this.adjacenyList = {};
+    this.adjacencyList = {};
   }
   addVertex = (vertex) => {
-    if (!this.adjacenyList[vertex]) {
-      this.adjacenyList[vertex] = [];
+    if (!this.adjacencyList[vertex]) {
+      this.adjacencyList[vertex] = [];
     }
   };
 
   addEdge = (v1, v2) => {
-    this.adjacenyList[v1].push(v2);
-    this.adjacenyList[v2].push(v1);
+    this.adjacencyList[v1].push(v2);
+    this.adjacencyList[v2].push(v1);
   };
 
   removeEdge = (v1, v2) => {
-    this.adjacenyList[v1] = this.adjacenyList[v1].filter((v) => v !== v2);
-    this.adjacenyList[v2] = this.adjacenyList[v2].filter((v) => v !== v1);
+    this.adjacencyList[v1] = this.adjacencyList[v1].filter((v) => v !== v2);
+    this.adjacencyList[v2] = this.adjacencyList[v2].filter((v) => v !== v1);
   };
 
   removeVertex =(vertex)=>{
@@ -39,3 +39,7 @@ g.addEdge("Hong Kong", "Tokyo");
 g.addEdge("Hong Kong", "Dallas");
 g.addEdge("Los Angeles", "Hong Kong");
 g.addEdge("Los Angeles", "Aspen");
+
+g.removeEdge("Tokyo","Dallas")
+g.removeVertex("Tokyo")
+console.log(g)
