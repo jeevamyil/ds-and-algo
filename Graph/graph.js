@@ -29,8 +29,8 @@ class Graph {
   DFSR = (startingVertex) => {
     let result = [];
     let visited = {};
-    let adjacencyList= this.adjacencyList;
-    ( function dfshelper(vertex){
+    let adjacencyList = this.adjacencyList;
+    (function dfshelper(vertex) {
       if (!vertex) {
         return null;
       }
@@ -42,6 +42,48 @@ class Graph {
         }
       }
     })(startingVertex);
+    return result;
+  };
+
+  DFSI(start) {
+    const stack = [start];
+    const result = [];
+    const visited = {};
+    let currentVertex;
+
+    visited[start] = true;
+    while (stack.length) {
+      currentVertex = stack.pop();
+      result.push(currentVertex);
+
+      this.adjacencyList[currentVertex].forEach((neighbor) => {
+        if (!visited[neighbor]) {
+          visited[neighbor] = true;
+          stack.push(neighbor);
+        }
+      });
+    }
+    return result;
+  }
+
+  BFS = (start) => {
+    let queue = [];
+    let result = [];
+    let visited = {};
+    let currentVertex;
+    visited[start] = true;
+
+    while (queue.length) {
+      currentVertex = queue.shift();
+      result.push(currentVertex);
+
+      this.adjacencyList[currentVertex].forEach((neighbor) => {
+        if (!visited[neighbor]) {
+          visited[neighbor] = true;
+          queue.push(neighbor);
+        }
+      });
+    }
     return result;
   };
 }
@@ -63,6 +105,7 @@ g.addEdge("Los Angeles", "Aspen");
 //g.removeVertex("Tokyo");
 console.log(g);
 console.log(g.DFSR("Tokyo"));
+console.log(g.DFSI("Tokyo"));
 
 /*
      dallas
