@@ -5,7 +5,7 @@ const divideAndConquer = (arr, num) => {
 
   while (start <= end) {
     let middle = Math.floor((start + end) / 2);
-    console.log(middle)
+    console.log(arr[middle])
     let middleValue = arr[middle];
     if (middleValue > num) {
       end = middle - 1;
@@ -19,4 +19,4 @@ const divideAndConquer = (arr, num) => {
   return null;
 };
 
-console.log(divideAndConquer([1, 2, 3, 4, 5, 6, 7, 8, 56, 66, 75, 87, 564], 5344));
+console.log(divideAndConquer([1, 2, 3, 4, 5, 6, 7, 8, 56, 66, 75, 87, 564], 564));
