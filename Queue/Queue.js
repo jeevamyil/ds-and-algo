@@ -30,9 +30,9 @@ class Queue {
       return null;
     } else {
       let targetNode = this.first;
-      if(this.first === this.last) {
+      if (this.first === this.last) {
         this.last = null;
-    }
+      }
       this.first = targetNode.next;
       targetNode.next = null;
       this.size--;
