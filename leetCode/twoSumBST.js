@@ -1,6 +1,6 @@
 //https://leetcode.com/problems/two-sum-iv-input-is-a-bst/
 
-var findTarget = function (root, k) {
+/*var findTarget = function (root, k) {
   let temp = [];
   const traverse = (r) => {
     if (r === null) {
@@ -25,5 +25,21 @@ var findTarget = function (root, k) {
       j--;
     }
   }
+  return false;
+};
+*/
+
+var findTarget = function (root, k) {
+  let temp = new Map();
+  const traverse = (r) => {
+    if (r === null) {
+      return;
+    }
+    if (temp.has(k - r.val)) return true;
+    temp.set(r.val, 1);
+    return traverse(r.left) || traverse(r.right);
+  };
+
+  if (traverse(root)) return true;
   return false;
 };
